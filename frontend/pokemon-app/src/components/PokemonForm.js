@@ -23,20 +23,20 @@ const PokemonForm = ({ fetchPokemons }) => {
     <div className='container'>
       <h2>Adicionar um novo Pokémon</h2>
       <form onSubmit={handleSubmit}>
-        <div class="mb-3">
+        <div className="mb-3">
           {/* <label for="exampleInputEmail1" class="form-label">Email address</label> */}
           <input type="text" value={nome} onChange={e => setNome(e.target.value)} placeholder="Nome" />
           {/* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> */}
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
           {/* <label for="exampleInputPassword1" class="form-label">Password</label> */}
           <input type="text" value={descricao} onChange={e => setDescricao(e.target.value)} placeholder="Descrição" />
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
         <input type="text" value={spriteUrl} onChange={e => setSpriteUrl(e.target.value)} placeholder="URL do Sprite" />
           {/* <label class="form-check-label" for="exampleCheck1">Check me out</label> */}
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
