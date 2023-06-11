@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PokemonForm = ({ fetchPokemons }) => {
   const [nome, setNome] = useState('');
   const [descricao, setDescricao] = useState('');
   const [spriteUrl, setSpriteUrl] = useState('');
 
+  const { user } = useAuth0();  // Obter o objeto user do hook useAuth0
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newPokemon = { nome, descricao, spriteUrl };
+    const newPokemon = { 
+      nome, 
+      descricao, 
+      spriteUrl, 
+      userSub: user.sub  // Incluir o userSub no objeto newPokemon
+    };
     await axios.post('http://localhost:5000/api/pokemons', newPokemon);
 
     fetchPokemons();

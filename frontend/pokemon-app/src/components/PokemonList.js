@@ -1,16 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 
-const PokemonList = ({ pokemons, fetchPokemons, searchTerm }) => {
+const PokemonList = ({ pokemons, fetchPokemons, searchTerm, userSub }) => {
 
   const deletePokemon = async (id) => {
     try {
-        await axios.delete(`http://localhost:5000/api/pokemons/${id}`);
-        fetchPokemons();  //Recarregar a lista de pokemons após a exclusão
+      await axios.delete(`http://localhost:5000/api/pokemons/${id}?userSub=${userSub}`);
+      fetchPokemons();  //Recarregar a lista de pokemons após a exclusão
     } catch (error) {
-        console.error('Houve um problema ao excluir o Pokémon:', error);
+      console.error('Houve um problema ao excluir o Pokémon:', error);
     }
   };
+  
 
   // Filtramos os pokémons com base no termo de pesquisa antes de renderizá-los
   let filteredPokemons = pokemons.filter((pokemon) => {
