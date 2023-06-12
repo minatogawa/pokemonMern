@@ -21,13 +21,20 @@ jobs:
         with:
           node-version: '16.x'
 
-      - name: npm install, build, and test
+        - name: npm install, build, and test (frontend)
+        env:
+          FRONTEND_PATH: ./frontend
         run: |
-          cd frontend
+          cd $FRONTEND_PATH
           npm install
           npm run build --if-present
           npm run test --if-present
-          cd ../backend
+      
+      - name: npm install, build, and test (backend)
+        env:
+          BACKEND_PATH: ./backend
+        run: |
+          cd $BACKEND_PATH
           npm install
           npm run build --if-present
           npm run test --if-present
