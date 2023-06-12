@@ -1,6 +1,7 @@
 //app.js
 
-require('dotenv').config({ path: './backend/.env' });
+require('dotenv').config({ path: './.env' })
+
 
 const express = require('express');
 const mongoose = require('mongoose');
