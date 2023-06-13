@@ -41,5 +41,8 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(axios)/)"
     ]
+  },
+  "devDependencies": {
+    "jsdom": "^22.1.0"
   }
 }
