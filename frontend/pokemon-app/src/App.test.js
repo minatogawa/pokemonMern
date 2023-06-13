@@ -1,8 +1,13 @@
+// App.test.js
+
+import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+it('renders Pokémon App link', async () => {
+  await act(async () => {
+    render(<App />);
+  });
+  const linkElement = screen.getByText(/Pokémon App/i);
   expect(linkElement).toBeInTheDocument();
 });
