@@ -23,7 +23,9 @@ jobs:
 
       - name: npm install, build, and test (frontend)
         env:
-          FRONTEND_PATH: ./frontend
+          FRONTEND_PATH: ./frontend/pokemon-app
+          REACT_APP_AUTH0_DOMAIN: ${{ secrets.REACT_APP_AUTH0_DOMAIN }}
+          REACT_APP_AUTH0_CLIENT_ID: ${{ secrets.REACT_APP_AUTH0_CLIENT_ID }}
         run: |
           cd $FRONTEND_PATH
           npm install
@@ -33,6 +35,8 @@ jobs:
       - name: npm install, build, and test (backend)
         env:
           BACKEND_PATH: ./backend
+          PORT: ${{ secrets.PORT }}
+          DB_URI: ${{ secrets.DB_URI }}
         run: |
           cd $BACKEND_PATH
           npm install
