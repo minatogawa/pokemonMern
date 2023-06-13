@@ -1,7 +1,6 @@
 // jest.setup.js
 
 const jsdom = require('jsdom');
-const crypto = require('crypto-browserify');
 
 const { JSDOM } = jsdom;
 
@@ -9,5 +8,10 @@ const dom = new JSDOM();
 global.document = dom.window.document;
 global.window = dom.window;
 
-// Use crypto-browserify para fornecer uma implementação de window.crypto
-global.window.crypto = crypto;
+// Simulação do Auth0Client
+jest.mock('@auth0/auth0-spa-js', () => ({
+  Auth0Client: jest.fn().mockImplementation(() => ({
+    handleRedirectCallback: jest.fn(),
+    // Adicione quaisquer outros métodos que você está usando
+  })),
+}));
